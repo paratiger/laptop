@@ -1,0 +1,85 @@
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
+}
+
+brew_cask_is_installed() {
+  local NAME=$(brew_cask_expand_alias "$1")
+  brew cask list -1 | grep -Fqx "$NAME"
+}
+
+brew_cask_install() {
+  if ! brew_cask_is_installed "$1"; then
+    brew cask install "$@"
+  fi
+}
+
+brew_cask_install_or_upgrade() {
+  if brew_cask_is_installed "$1"; then
+    echo "$1 is already installed, brew cask upgrade is not yet implemented"
+  else
+    brew cask install "$@"
+  fi
+}
+
+fancy_echo 'Installing old Imagemagick'
+cd /usr/local
+git fetch origin --unshallow
+git checkout b84f779 Library/Formula/imagemagick.rb
+brew install imagemagick
+brew pin imagemagick
+git reset --hard head
+cd /usr/local/Cellar/imagemagick/6.8.8-9/lib
+ln -s libMagick++-6.Q16.3.dylib libMagick++.dylib
+ln -s libMagickCore-6.Q16.2.dylib libMagickCore.dylib
+ln -s libMagickWand-6.Q16.2.dylib libMagickWand.dylib
+
+fancy_echo 'Installing brew cask'
+brew tap caskroom/cask
+brew_install_or_upgrade 'brew-cask'
+
+fancy_echo 'Installing mysql and elasticsearch'
+brew_install_or_upgrade 'mysql'
+brew_install_or_upgrade 'elasticsearch'
+
+fancy_echo 'Installing glub so we can make using gitlab a little nicer'
+gem_install_or_update 'glub'
+
+fancy_echo 'Installing postgres and java'
+brew_cask_install 'postgres'
+brew_cask_install_or_upgrade 'java'
+
+fancy_echo 'Installing development items'
+brew_install_or_upgrade 'autoconf'
+brew_install_or_upgrade 'automake'
+brew_install_or_upgrade 'apple-gcc42'
+brew_install_or_upgrade 'ghostscript'
+brew_install_or_upgrade 'freetype'
+brew_install_or_upgrade 'svn'
+brew_install_or_upgrade 'pv'
+brew_install_or_upgrade 'git-flow-avh'
+brew_install_or_upgrade 'rbenv-gem-rehash'
+brew install aspell --lang=en
+
+fancy_echo 'Installing rubies'
+if ! rbenv versions | grep -Fq "2.1.6"; then
+  rbenv install -s "2.1.6"
+fi
+if ! rbenv versions | grep -Fq "1.9.3-p392"; then
+  rbenv install -s "1.9.3-p392"
+fi
+if ! rbenv versions | grep -Fq "ree-1.8.7-2012.02"; then
+  rbenv install -s "ree-1.8.7-2012.02"
+fi
+
+fancy_echo 'Installing apps'
+brew_cask_install_or_upgrade '1password'
+brew_cask_install_or_upgrade 'alfred'
+brew_cask_install_or_upgrade 'atom'
+brew_cask_install_or_upgrade 'dropbox'
+brew_cask_install_or_upgrade 'firefox'
+brew_cask_install_or_upgrade 'google-chrome'
+brew_cask_install_or_upgrade 'iterm2'
+brew_cask_install_or_upgrade 'skype'
+brew_cask_install_or_upgrade 'slack'
+brew_cask_install_or_upgrade 'sequel-pro'
+brew_cask_install_or_upgrade 'spotify'
