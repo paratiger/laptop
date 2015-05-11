@@ -37,16 +37,16 @@ fancy_echo 'Installing brew cask'
 brew tap caskroom/cask
 brew_install_or_upgrade 'brew-cask'
 
+fancy_echo 'Installing postgres and java'
+brew_cask_install_or_upgrade 'java'
+brew_cask_install 'postgres'
+
 fancy_echo 'Installing mysql and elasticsearch'
 brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'elasticsearch'
 
 fancy_echo 'Installing glub so we can make using gitlab a little nicer'
 gem_install_or_update 'glub'
-
-fancy_echo 'Installing postgres and java'
-brew_cask_install 'postgres'
-brew_cask_install_or_upgrade 'java'
 
 fancy_echo 'Installing development items'
 brew_install_or_upgrade 'autoconf'
