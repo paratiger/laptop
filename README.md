@@ -111,6 +111,7 @@ Development items:
 * apple-gcc42
 * ghostscript
 * freetype
+* launchrocket
 * svn
 * pv
 * git-flow-avh
