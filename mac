@@ -101,6 +101,7 @@ fancy_echo "Updating Homebrew formulas ..."
 brew update
 brew bundle --file=- <<EOF
 tap "homebrew/services"
+tap "caskroom/cask"
 # Unix
 brew "git"
 brew "openssl"
@@ -113,7 +114,7 @@ brew "imagemagick"
 brew "qt"
 # Programming languages
 brew "libyaml" # should come after openssl
-brew "java"
+cask "java"
 brew "node"
 brew "rbenv"
 brew "ruby-build"
@@ -129,12 +130,11 @@ brew "automake"
 brew "apple-gcc42"
 brew "ghostscript"
 brew "freetype"
-brew "launchrocket"
+cask "launchrocket"
 brew "svn"
 brew "pv"
 brew "git-flow-avh"
-brew "rbenv-gem-rehash"
-brew "aspell" --lang=en
+brew "aspell", args: ["lang=en"]
 EOF
 
 fancy_echo "Configuring Ruby ..."

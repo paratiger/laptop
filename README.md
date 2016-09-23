@@ -19,6 +19,8 @@ We support:
 Older versions may work but aren't regularly tested. Bug reports for older
 versions are welcome.
 
+Ensure `xcode` is installed and run `xcode-select --install`
+
 Install
 -------
 

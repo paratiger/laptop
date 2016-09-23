@@ -2,27 +2,27 @@
 
 fancy_echo "Installing apps"
 brew bundle --file=- <<EOF
-# brew "go"
-brew "1password"
-brew "alfred"
-brew "atom"
-brew "cyberduck"
-brew "dropbox"
-brew "firefox"
-brew "google-chrome"
-brew "integrity"
-brew "iterm2"
-brew "magicprefs"
-brew "medis"
-brew "navicat-for-postgresql"
-brew "postman"
-brew "razorsql"
-brew "slack"
-brew "sequel-pro"
-brew "spotify"
-brew "teleport"
-brew "thyme"
-brew "virtualbox"
+# cask "go"
+cask "1password"
+cask "alfred"
+cask "atom"
+cask "cyberduck"
+cask "dropbox"
+cask "firefox"
+cask "google-chrome"
+cask "integrity"
+cask "iterm2"
+cask "magicprefs"
+cask "medis"
+cask "navicat-for-postgresql"
+cask "postman"
+cask "razorsql"
+cask "slack"
+cask "sequel-pro"
+cask "spotify"
+cask "teleport"
+cask "thyme"
+cask "virtualbox"
 EOF
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
@@ -37,7 +37,7 @@ install_ruby_version() {
   fi
 }
 
-declare -a rubies=("2.3.1" "2.2.5" "2.2.3" "2.2.2" "2.2.1" "2.1.6" "2.1.5" "2.1.2" "2.1.1" "2.1.0" "1.9.3-p392" "ree-1.8.7-2012.02" "1.8.6-p420")
+declare -a rubies=("2.3.1" "2.2.5" "2.2.3" "2.2.2" "2.2.1" "2.1.6" "2.1.5" "2.1.2" "2.1.1" "2.1.0" "1.9.3-p392")
 for i in "${rubies[@]}"
 do
   install_ruby_version "$i"
