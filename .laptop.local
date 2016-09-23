@@ -2,7 +2,6 @@
 
 fancy_echo "Installing apps"
 brew bundle --file=- <<EOF
-# cask "go"
 cask "1password"
 cask "alfred"
 cask "atom"

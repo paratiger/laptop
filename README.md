@@ -78,16 +78,20 @@ Testing tools:
 
 Programming languages and configuration:
 
+* [Ansible] for writing Ansible playbooks
 * [Bundler] for managing Ruby libraries
+* [GoLang] for writing go apps
 * [Java] for running Elasticsearch
 * [Node.js] and [NPM], for running apps and installing JavaScript packages
 * [Rbenv] for managing versions of Ruby
 * [Ruby Build] for installing Rubies
 * [Ruby] stable for writing general-purpose code
 
+[Ansible]: https://www.ansible.com/
 [Bundler]: http://bundler.io/
 [ImageMagick]: http://www.imagemagick.org/
 [Java]: https://www.java.com/en/
+[GoLang]: https://golang.org/
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.org/
 [Rbenv]: https://github.com/sstephenson/rbenv
@@ -100,11 +104,13 @@ Databases:
 * [MySQL] for storing relational data
 * [Postgres] for storing relational data
 * [Redis] for storing key-value data
+* [SQLite] for storing relational data
 
 [Elasticsearch]: https://www.elastic.co/products/elasticsearch
 [MySQL]: https://www.mysql.com/
 [Postgres]: http://www.postgresql.org/
 [Redis]: http://redis.io/
+[SQLite]: https://www.sqlite.org/
 
 Development items:
 

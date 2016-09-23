@@ -46,6 +46,14 @@ fi
 append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 
 
+fancy_echo "Configuring GoLang ..."
+if [ ! -d "$HOME/go/" ]; then
+  mkdir "$HOME/go"
+fi
+append_to_zshrc 'export GOPATH=$HOME/go'
+append_to_zshrc 'export PATH=$PATH:$GOPATH/bin'
+
+
 HOMEBREW_PREFIX="/usr/local"
 
 if [ -d "$HOMEBREW_PREFIX" ]; then
@@ -113,7 +121,9 @@ brew "imagemagick"
 # Testing
 brew "qt"
 # Programming languages
+brew "ansible"
 brew "libyaml" # should come after openssl
+brew "go", args: ["cross-compile-common"]
 cask "java"
 brew "node"
 brew "rbenv"
@@ -123,18 +133,21 @@ brew "elasticsearch", restart_service: true
 brew "mysql", restart_service: true
 brew "postgres", restart_service: true
 brew "redis", restart_service: true
+brew "sqlite"
 # Development items
 tap "homebrew/dupes"
+brew "aspell", args: ["lang=en"]
 brew "autoconf"
 brew "automake"
 brew "apple-gcc42"
+brew "bazaar"
 brew "ghostscript"
+brew "git-flow-avh"
+brew "freetds"
 brew "freetype"
 cask "launchrocket"
 brew "svn"
 brew "pv"
-brew "git-flow-avh"
-brew "aspell", args: ["lang=en"]
 EOF
 
 fancy_echo "Configuring Ruby ..."
